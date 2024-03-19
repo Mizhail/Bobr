@@ -12,5 +12,5 @@ node *init(char *operation, int priority);
 node *pop(node **top);
 void push(node **top, node *toAdd);
 void pushContent(node **top, char *operatiom, int priority);
-void deleteStack(node *top);
-void showStack(node *top);
+void deleteStack(node **top);
+void showStack(node **top);
