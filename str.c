@@ -27,7 +27,8 @@ char *addString(char *str, int *sizeStr, char *subStr){
         sizeSub += 1;
     }
     *sizeStr += sizeSub;
-    str = realloc(str, *sizeStr * sizeof(char));
+    str = realloc(str, (*sizeStr) * sizeof(char));
+    
     for(int i = 0; i < sizeSub; i++){
         str[*sizeStr - sizeSub + i] = subStr[i];
     }
@@ -42,4 +43,27 @@ char *addStringPart(char *str, int *sizeStr, char *subStr, int sizePart){
         str[*sizeStr - sizePart + i] = subStr[i];
     }
     return str;
+}
+
+int compare(char *str1, char *str2){
+    int size1 = 0;
+    int size2 = 0;
+    int isEqual = 1;
+    for(int i = 0; str1[i] != 0; i++){
+        size1 += 1;
+    }
+    for(int i = 0; str2[i] != 0; i++){
+        size2 += 1;
+    }
+    if(size1 == size2){
+        for(int i = 0; i < size1 && isEqual; i++){
+            if(str1[i] != str2[i]){
+                isEqual = 0;
+            }
+        }
+    }
+    else{
+        isEqual = 0;
+    }
+    return isEqual;
 }
