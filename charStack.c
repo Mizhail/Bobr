@@ -25,19 +25,20 @@ void pushContent(node **top, char *operation, int priority){
     *top = toAddNode;
 }
 
-void deleteStack(node *top){
-    node *slider = top;
-    while(slider != NULL){
+void deleteStack(node **top){
+    node *slider = *top;
+    while(slider -> prev != NULL){
         slider = slider -> prev;
-        free(top);
-        top = slider;
+        free(*top);
+        *top = slider;
     }
+    free(slider);
 }
 
-void showStack(node *top){
-    node *slider = top;
-    while(slider != NULL){
-        printf("OPERATION:: \"%s\"  ADDED:: %d\n", slider -> operation, slider -> priority);
+void showStack(node **top){
+    node *slider = *top;
+    while(slider -> priority != -1){
+        printf("OPERATION:: \"%s\"  PRIORITY:: %d\n", slider -> operation, slider -> priority);
         slider = slider -> prev;
     }
 }
